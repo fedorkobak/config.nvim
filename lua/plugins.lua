@@ -48,7 +48,7 @@ return {
         config = function()
             -- Some terminal emulators do not support the "`" symbol. In the
             -- default ubuntu emualator, `<C-`>` is equivalent to the <C-Space>
-            open_mappings = {"<C-`>", "<C-Space>"}
+            local open_mappings = {"<C-`>", "<C-Space>"}
             require("toggleterm").setup{
                 open_mapping = open_mappings,
                 direction = "horizontal",
