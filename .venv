@@ -1,0 +1,7 @@
+# the .sh script that setups the dev envrionment
+# makes the nvim to refer to the configurations in this folder
+appname=nvim-dev
+script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+
+ln -sfn $script_dir/ ~/.config/$appname
+export NVIM_APPNAME=$appname
