@@ -132,7 +132,11 @@ The [telescope](https://github.com/nvim-telescope/telescope.nvim) has a great fe
 
 Lua is used to configure and extend Neovim through the `vim` runtime API.
 
-See the dedicated [Lua guide](README/lua.md) for runtime path notes, running Lua snippets, and the Neovim API table.
+For more check:
+
+- Offiial [Lua guide](https://neovim.io/doc/user/lua-guide/) to start using lua in nvim.
+- The [Lua](https://neovim.io/doc/user/lua/#lua-vim-system) runtime reference.
+- [Lua](README/lua.md) page for runtime path notes, running Lua snippets, and the Neovim API table.
 
 ## LSP
 
