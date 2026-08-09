@@ -40,26 +40,45 @@ table: 0x79a67ffea218
 
 The following table shows the lua subtables that are responsible for various aspects of the editor:
 
-| API              | Purpose                     |
-| ---------------- | --------------------------- |
-| `vim.o`          | Global options              |
-| `vim.bo`         | Buffer-local options        |
-| `vim.wo`         | Window-local options        |
-| `vim.opt`        | Option manipulation         |
-| `vim.g`          | Global Vim variables (`g:`) |
-| `vim.b`          | Buffer variables (`b:`)     |
-| `vim.w`          | Window variables (`w:`)     |
-| `vim.t`          | Tabpage variables (`t:`)    |
-| `vim.env`        | Environment variables       |
-| `vim.fn`         | Vimscript functions         |
-| `vim.api`        | Low-level Neovim API        |
-| `vim.keymap`     | Key mappings                |
-| `vim.cmd`        | Execute Ex commands         |
-| `vim.loop`       | LibUV interface             |
-| `vim.fs`         | Filesystem utilities        |
-| `vim.uv`         | Modern name for LibUV API   |
-| `vim.lsp`        | LSP client API              |
-| `vim.diagnostic` | Diagnostics API             |
+| API                           | Purpose                     |
+| ----------------------------- | --------------------------- |
+| [`vim.o`][vim-o]              | Global options              |
+| [`vim.bo`][vim-bo]            | Buffer-local options        |
+| [`vim.wo`][vim-wo]            | Window-local options        |
+| [`vim.opt`][vim-opt]          | Option manipulation         |
+| [`vim.g`][vim-g]              | Global Vim variables (`g:`) |
+| [`vim.b`][vim-b]              | Buffer variables (`b:`)     |
+| [`vim.w`][vim-w]              | Window variables (`w:`)     |
+| [`vim.t`][vim-t]              | Tabpage variables (`t:`)    |
+| [`vim.env`][vim-env]          | Environment variables       |
+| [`vim.fn`][vim-fn]            | Vimscript functions         |
+| [`vim.api`][vim-api]          | Low-level Neovim API        |
+| [`vim.keymap`][vim-keymap]    | Key mappings                |
+| [`vim.cmd`][vim-cmd]          | Execute Ex commands         |
+| [`vim.loop`][vim-loop]        | LibUV interface             |
+| [`vim.fs`][vim-fs]            | Filesystem utilities        |
+| [`vim.uv`][vim-uv]            | Modern name for LibUV API   |
+| [`vim.lsp`][vim-lsp]          | LSP client API              |
+| [`vim.diagnostic`][vim-diag]  | Diagnostics API             |
+
+[vim-o]: https://neovim.io/doc/user/lua.html#vim.o
+[vim-bo]: https://neovim.io/doc/user/lua.html#vim.bo
+[vim-wo]: https://neovim.io/doc/user/lua.html#vim.wo
+[vim-opt]: https://neovim.io/doc/user/lua.html#vim.opt
+[vim-g]: https://neovim.io/doc/user/lua.html#vim.g
+[vim-b]: https://neovim.io/doc/user/lua.html#vim.b
+[vim-w]: https://neovim.io/doc/user/lua.html#vim.w
+[vim-t]: https://neovim.io/doc/user/lua.html#vim.t
+[vim-env]: https://neovim.io/doc/user/lua.html#vim.env
+[vim-fn]: https://neovim.io/doc/user/lua.html#vim.fn
+[vim-api]: https://neovim.io/doc/user/api.html#API
+[vim-keymap]: https://neovim.io/doc/user/lua.html#vim.keymap
+[vim-cmd]: https://neovim.io/doc/user/lua.html#vim.cmd()
+[vim-loop]: https://neovim.io/doc/user/deprecated.html#vim.loop
+[vim-fs]: https://neovim.io/doc/user/lua.html#vim.fs
+[vim-uv]: https://neovim.io/doc/user/lua.html#vim.uv
+[vim-lsp]: https://neovim.io/doc/user/lsp.html#vim.lsp
+[vim-diag]: https://neovim.io/doc/user/diagnostic.html#vim.diagnostic
 
 The `vim.o.runtimepath`/`vim.o.rtp` variable determines where nvim looks for executable scripts.
 
