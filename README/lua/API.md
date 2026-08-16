@@ -140,3 +140,43 @@ CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 
 ```
 <!-- nvim-lua-output:end -->
+
+### `SystemObj`
+
+The [`SystemObj`](https://neovim.io/doc/user/lua/#vim.SystemObj) object keeps the information
+about the process that is still running.
+
+The methods are:
+
+- `is_closing`: checks if process finishing or finished.
+- `kill`: kills the process.
+- `wait`: blocks the main thread and waits untill process finish.
+- `write`: writes to the stdit of the process. **Note** the `vim.system` have to be called
+with `stdin = true` parameter.
+
+---
+
+The following code illustrates how to spawn a `bash` process and during it's
+execution send specific bash commands to it:
+
+```lua
+local obj = vim.system({"bash"}, {stdin = true})
+obj:write({"echo hello", "echo '=== ls command ==='", "ls"})
+obj:write(nil)
+local completed = obj:wait()
+print(completed.stdout)
+```
+<!-- nvim-lua-output:start -->
+```text
+hello
+=== ls command ===
+init.lua
+lua
+nvim.log
+README
+README.md
+scripts
+setup.sh
+
+```
+<!-- nvim-lua-output:end -->
