@@ -180,3 +180,51 @@ setup.sh
 
 ```
 <!-- nvim-lua-output:end -->
+
+
+### Callbacks
+
+The behaviour when the process outputs to stderr or stdout can be controlled
+by defining the corresponding callback.
+
+---
+
+The following cell starts the bash session, which defines the callbacks that
+wrap the message passed the corresponding stream in markers that allow
+the stream to be identified:
+
+```lua
+local obj = vim.system({ "bash" }, {
+    stdin = true,
+    stdout = function(err, data)
+        if data then
+            print("[stdin]" .. data .. "[stdin]")
+        else
+            print("stdout closed")
+        end
+    end,
+    stderr = function(err, data)
+        if data then
+            print("[stderr]" .. data .. "[stderr]")
+        else
+            print("stderr closed")
+        end
+    end
+})
+
+obj:write("echo -n message_to_stdin\n")
+obj:write("echo -n message_to_stderr >& 2\n")
+obj:write(nil)
+
+completed = obj:wait()
+print(completed.stdout)
+```
+<!-- nvim-lua-output:start -->
+```text
+[stdin]message_to_stdin[stdin]
+[stderr]message_to_stderr[stderr]
+stdout closed
+stderr closed
+nil
+```
+<!-- nvim-lua-output:end -->
