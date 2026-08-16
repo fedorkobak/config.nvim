@@ -97,3 +97,46 @@ print(vim.fn.fnamemodify("example.txt", ":p"))
 /home/fedor/Documents/code/fedorkobak/example.txt
 ```
 <!-- nvim-lua-output:end -->
+
+
+## `vim.system`
+
+The `vim.system` is a function that allows to run the command in the system's cmd.
+
+A few object have been defined to manage processes spawned by the `vim.system`:
+
+- `vim.SystemCompleted`: the output of the system command.
+- `vim.SystemObj`: this object represents process and allows you to manipulate it.
+
+Check more in the [Lua module: vim.system](https://neovim.io/doc/user/lua/#lua-vim-system)
+section of the nvim documentation.
+
+---
+
+The following cell spawns the process. It calls the `wait` method to wait until the
+process is complete, and then retrieves the process output.
+
+```lua
+local obj = vim.system({"echo", "output of the command line"})
+local complted = obj:wait()
+print(complted.stdout)
+```
+<!-- nvim-lua-output:start -->
+```text
+output of the command line
+
+```
+<!-- nvim-lua-output:end -->
+
+For a change the output of the `docker ps` command:
+
+```lua
+local obj = vim.system({"docker", "ps"}):wait()
+print(obj.stdout)
+```
+<!-- nvim-lua-output:start -->
+```text
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+```
+<!-- nvim-lua-output:end -->
