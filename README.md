@@ -119,7 +119,7 @@ vim.keymap.set(mode, shortcut, command)
 
 Where:
 
-- `mode`: modes where the shortcut would be available (`n`, `e`, `v` etc.). 
+- `mode`: modes where the shortcut would be available (`n`, `e`, `v` etc.).
 - `shortcut`: the shortcut you want to set up.
 - `command`: the command the shortcut will execute.
 
@@ -195,7 +195,9 @@ The important things to know for configuring the LSP in nvim:
 - [`vim.lsp.enable`][vim.lsp.enable]: function includes the server to the runtime.
   It can take configurations from:
     - `nvim.lsp.config` if they are defined there.
-    - **Runtime path** can contain files with LSPs configuration. The [`neovim/nvim-lspconfig`][nvim-lspconfig] plugins is essential here - adds the configs for the most popular LSP server to the runtime path.
+    - **Runtime path** can contain files with LSPs configuration.
+      The [`neovim/nvim-lspconfig`][nvim-lspconfig] plugins is essential here -
+      adds the configs for the most popular LSP server to the runtime path.
 
 [vim.lsp.enable]: https://neovim.io/doc/user/lsp.html#vim.lsp.enable()
 [nvim-lspconfig]: https://github.com/neovim/nvim-lspconfig
