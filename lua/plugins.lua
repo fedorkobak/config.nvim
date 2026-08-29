@@ -15,10 +15,18 @@ return {
         },
         config = function()
             local builtin = require("telescope.builtin")
-            local search = function()
+
+            -- search by filename
+            local name_search = function()
                 builtin.find_files({ hidden = true, no_ignore = true })
             end
-            vim.keymap.set("n", "<C-p>", search, {})
+            vim.keymap.set("n", "<C-p>", name_search, {})
+
+            -- search by the file content
+            local live_grep = function()
+                builtin.live_grep({ hidden = true, no_ignore = true })
+            end
+            vim.keymap.set("n", "<C-o>", live_grep, {})
         end,
     },
     {

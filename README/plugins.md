@@ -25,6 +25,7 @@ You have to list you plugins in the `spec` parameter.
 Is a great plugin that allows to search for the files within the project.
 
 - `Telescope find_files` to look for the files in project. Mapped to `<C-p>`.
+- `Telescope live_grep` to look the content of the files in the proeject. Mapped to `<C-o>`.
 - `Telescope regiesters` to view the contents of the registers.
 
 Open the searched result in a **new split or tab**:
