@@ -35,3 +35,6 @@ vim.keymap.set("n", "<C-n>", lua_md_runner.execute_block, { desc = "Execute Mark
 vim.keymap.set("n", "<leader>mr", molten_md_runner.execute_block, {
     desc = "Execute Markdown block with Molten and insert output",
 })
+
+-- The support of the local `.nvim.lua` config
+vim.o.exrc = true

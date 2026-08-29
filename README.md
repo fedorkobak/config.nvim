@@ -19,8 +19,6 @@ The specific file is configurable:
 
 Reload configuration with `source $MYVIMRC`.
 
-**Note** use the `.venv` script to configure nvim to load its configuration from this folder for immediate experimentation.
-
 Some basic configuration options:
 
 - `vim.cmd("set expandtab")`: use spaces instead of tab.
@@ -35,6 +33,12 @@ To start nvim with custom a config use `nvim -u <config file>`. This option bypa
 **Note** It's typically not enough to sepcify just the config script. If the script has any requirements from the current folder, nvim simply cannot load them as they are not added to the runtimepath.
 
 For example, to try the actual configuration for this setup run `nvim -u scripts/dev_init.lua`.
+
+### Project configuration
+
+The project-specifc configuration specifies the file `.nvim.lua` in the project folder.
+
+To make nvim to execute the code from the `.nvim.lua` file the `vim.o.exec` option have to be set to `true`.
 
 ## Windows
 
