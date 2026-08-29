@@ -5,6 +5,7 @@ return {
             vim.lsp.enable("pyright")
             vim.lsp.enable("ruff")
             vim.lsp.enable("lua_ls")
+            vim.lsp.enable("rumdl")
 
             vim.keymap.set(
                 "n", "E", vim.diagnostic.open_float,
