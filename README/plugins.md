@@ -33,6 +33,20 @@ Open the searched result in a **new split or tab**:
 - `<C-v>` to open in a new vertical split.
 - `<C-t>` to open in a new tab.
 
+Ignore the files from the search with following configuration:
+
+```lua
+require("telescope").setup({
+  defaults = {
+    file_ignore_patterns = {
+        "pattern",
+        "to",
+        "ignore"
+    },
+  },
+})
+```
+
 ## File browser
 
 The filebrowser can be added to neovim using [neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim) plugin. To be able to see the icons of the files/folders in the files-tree, you have to specify the special font to your terminal I prefer [Lekton nerd font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/Lekton.zip).
