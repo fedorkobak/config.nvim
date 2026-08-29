@@ -16,6 +16,11 @@ vim.keymap.set("t", "<C-w>k", "<C-\\><C-n><C-w>k")
 vim.keymap.set("t", "<C-w>l", "<C-\\><C-n><C-w>l")
 vim.keymap.set("t", "<C-w><Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
 
+vim.keymap.set("t", "<C-w><Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
+
+vim.keymap.set("t", "<C-Up>", function() vim.cmd.resize("+10") end)
+vim.keymap.set("t", "<C-Down>", function() vim.cmd.resize("-10") end)
+
 vim.keymap.set("n", "<C-w>L", "<C-w>l", { remap = true })
 vim.keymap.set("n", "<C-w>H", "<C-w>h", { remap = true })
 vim.keymap.set("n", "<C-w>J", "<C-w>j", { remap = true })
