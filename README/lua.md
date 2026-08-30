@@ -1,13 +1,14 @@
 # Lua
 
-Lua is a programming language that allow to manipulate the nvim editor. In fact, all the extentions of nvim are written in this language.
+Lua is a programming language that allow to manipulate the nvim editor. In fact,
+all the extentions of nvim are written in this language.
 
 Check the [lua-guide](https://neovim.io/doc/user/lua-guide/) for a basic reference on using lua within Neovim.
 
-
 ## Run
 
-There are several options for running code directly in nvim environment. This is extremely usefull when debugging of the nvim behaviour.
+There are several options for running code directly in nvim environment. This is
+extremely usefull when debugging of the nvim behaviour.
 
 To run a single line of code, use the following command:
 
@@ -15,7 +16,8 @@ To run a single line of code, use the following command:
 :lua print("hello world")
 ```
 
-To run code selected in Visual mode, select the code, enter Command-line mode, and add lua after the suggested `'<,'>` range. Command line would look like this:
+To run code selected in Visual mode, select the code, enter Command-line mode, and
+add lua after the suggested `'<,'>` range. Command line would look like this:
 
 ```vimscript
 :'<,'>lua
@@ -23,7 +25,8 @@ To run code selected in Visual mode, select the code, enter Command-line mode, a
 
 ## API
 
-The `NVim` provides some API's in its Lua runtime. These are specific API's to manipulate with editor.
+The `NVim` provides some API's in its Lua runtime. These are specific API's to
+manipulate with editor.
 
 The API is provided through `vim` table:
 
@@ -31,14 +34,18 @@ The API is provided through `vim` table:
 print(type(vim))
 print(vim)
 ```
+
 <!-- nvim-lua-output:start -->
+
 ```text
 table
 table: 0x79a67ffea218
 ```
+
 <!-- nvim-lua-output:end -->
 
-The following table shows the lua subtables that are responsible for various aspects of the editor:
+The following table shows the lua subtables that are responsible for various
+aspects of the editor:
 
 | API                           | Purpose                     |
 | ----------------------------- | --------------------------- |
@@ -80,6 +87,7 @@ The following table shows the lua subtables that are responsible for various asp
 [vim-lsp]: https://neovim.io/doc/user/lsp.html#vim.lsp
 [vim-diag]: https://neovim.io/doc/user/diagnostic.html#vim.diagnostic
 
-The `vim.o.runtimepath`/`vim.o.rtp` variable determines where nvim looks for executable scripts.
+The `vim.o.runtimepath`/`vim.o.rtp` variable determines where nvim looks for
+executable scripts.
 
 Check more in the corresponding [API](lua/API.md) page.
