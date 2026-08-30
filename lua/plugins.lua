@@ -26,7 +26,7 @@ return {
             local live_grep = function()
                 builtin.live_grep({ hidden = true, no_ignore = true })
             end
-            vim.keymap.set("n", "<C-P>", live_grep, {})
+            vim.keymap.set("n", "<S-p>", live_grep, {})
         end,
     },
     {
