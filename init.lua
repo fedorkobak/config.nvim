@@ -43,3 +43,16 @@ vim.keymap.set("n", "<leader>mr", molten_md_runner.execute_block, {
 
 -- The support of the local `.nvim.lua` config
 vim.o.exrc = true
+
+-- Commands to copy the current filepath to clipboard
+vim.api.nvim_create_user_command("CopyFilename", function()
+    vim.fn.setreg("+", vim.fn.expand("%:t"))
+end, {})
+
+vim.api.nvim_create_user_command("CopyRelativePath", function()
+    vim.fn.setreg("+", vim.fn.expand("%"))
+end, {})
+
+vim.api.nvim_create_user_command("CopyAbsolutePath", function()
+    vim.fn.setreg("+", vim.fn.expand("%:p"))
+end, {})
