@@ -45,3 +45,16 @@ some problem you can get additional inforamation in the floating window. The
 [vim.lsp.buf.references]: https://neovim.io/doc/user/lsp.html#vim.lsp.buf.references()
 [vim.lsp.buf.hover]: https://neovim.io/doc/user/lsp.html#vim.lsp.buf.hover()
 [vim.diagnostic.open_float]: https://neovim.io/doc/user/diagnostic.html#vim.diagnostic.open_float()
+
+## Servers
+
+Each server is configured separately. To enable one use comamnd
+`vim.lsp.enable("lsp_name")`. Here it also can be configured.
+
+To troubleshoot the issues with LSP, use the command `:checkhealth vim.lsp`.
+It lists a lot of information, practically usefull are:
+
+- `vim.lsp: Enabled Configurations` section describes the configuration added
+to the setup.
+- `vim.lsp: Active Clients` section shows the lsp configurations active in this
+specific environemnt.
