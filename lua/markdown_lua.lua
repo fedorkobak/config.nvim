@@ -108,7 +108,7 @@ end
 ---@return boolean success Whether the code compiled and completed without an error.
 local function run(code, chunk_name)
     local output = {}
-    
+
     -- Changing the behaviour of the print function in the compiled
     -- code of the block
     local environment = setmetatable({

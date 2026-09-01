@@ -38,7 +38,7 @@ Open the searched result in a **new split or tab**:
 - `<C-v>` to open in a new vertical split.
 - `<C-t>` to open in a new tab.
 
-Ignore the files from the search with following configuration:
+**Ignore** the files from the search with following configuration:
 
 ```lua
 require("telescope").setup({
@@ -51,6 +51,8 @@ require("telescope").setup({
   },
 })
 ```
+
+The patterns are specified using Lua patterns.
 
 ## File browser
 
