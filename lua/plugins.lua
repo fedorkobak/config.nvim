@@ -27,6 +27,15 @@ return {
                 builtin.live_grep({ hidden = true, no_ignore = true })
             end
             vim.keymap.set("n", "<S-p>", live_grep, {})
+
+            -- the commands navigation managed by telescope
+            vim.keymap.set("n", ";", builtin.commands)
+
+            -- commands for not so common to use features
+            vim.api.nvim_create_user_command("TelSearchHistory", builtin.search_history, {})
+            vim.api.nvim_create_user_command("TelBuffers", builtin.buffers, {})
+            vim.api.nvim_create_user_command("TelOldFiles", builtin.oldfiles, {})
+            vim.api.nvim_create_user_command("TelGitStatus", builtin.git_status, {})
         end,
     },
     {
