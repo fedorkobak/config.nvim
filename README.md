@@ -150,6 +150,9 @@ as follows: `<C-{key}>`, `<A-{key}>`, `<S-{key}>`.
 special key for shortcuts configured for this user. By default, the `<leader>`
 is equivalent to space.
 
+**Check the command** which comamnd is mapped to the some shortcat with
+command `:verbose map [keymap]`. For example `:verbose map <C-p>`.
+
 ## Registers
 
 Vim contains several clipboards, which are called 'registers'. They have names
