@@ -50,7 +50,8 @@ vim.api.nvim_create_user_command("CopyFilename", function()
 end, {})
 
 vim.api.nvim_create_user_command("CopyRelativePath", function()
-    vim.fn.setreg("+", vim.fn.expand("%"))
+    local relative_path = vim.fn.fnamemodify(vim.fn.expand("%:p"), ":.")
+    vim.fn.setreg("+", relative_path)
 end, {})
 
 vim.api.nvim_create_user_command("CopyAbsolutePath", function()
