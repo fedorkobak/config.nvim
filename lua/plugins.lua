@@ -123,6 +123,23 @@ return {
 
         end,
     },
+    {
+        -- The patched build is used
+        "fedorkobak/nvim-dbee",
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+        },
+        build = function()
+            local manifest = require("dbee.install.__manifest")
+            -- Loading patched backend
+            manifest.urls["linux/amd64"] =
+                "https://github.com/fedorkobak/nvim-dbee/releases/download/build/dbee.tar.gz"
+            require("dbee").install('curl')
+        end,
+        config = function()
+            require("dbee").setup()
+        end,
+    },
     -- {
     --     "git@github.com:fedorkobak/md_runner.nvim.git",
     --     config = function()
