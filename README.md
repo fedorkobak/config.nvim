@@ -57,6 +57,17 @@ folder.
 To make nvim to execute the code from the `.nvim.lua` file the `vim.o.exec` option
 have to be set to `true`.
 
+### Ignore
+
+To ignore all the configurations, use the `--clean` flag when starting `nvim`.
+
+**Note**: the local configuration file `.nvim.lua` will also as well, so you need
+to specify it explicitely:
+
+```bash
+nvim --clean -u .nvim.lua
+```
+
 ## Windows
 
 Nvim can handle multiple documents simultaneously with buffers, windows, and tabs.
