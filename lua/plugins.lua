@@ -140,13 +140,13 @@ return {
             require("dbee").setup()
         end,
     },
-    -- {
-    --     "git@github.com:fedorkobak/md_runner.nvim.git",
-    --     config = function()
-    --         local md_runner = require("md_runner")
-    --         md_runner.setup({
-    --             log_level = vim.log.levels.WARNING,
-    --         })
-    --     end
-    -- },
+    {
+        "git@github.com:fedorkobak/md_runner.nvim.git",
+        config = function()
+            local md_runner = require("md_runner")
+            md_runner.setup({
+                log_level = vim.log.levels.WARNING,
+            })
+        end
+    },
 }
