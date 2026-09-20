@@ -1,3 +1,12 @@
+<!-- md-runner
+{
+  "executors": {
+    "lua": {
+      "module": "md_runner.executors.nvim_lua"
+    }
+  }
+}
+-->
 # Lua
 
 Lua is a programming language that allow to manipulate the nvim editor. In fact,
@@ -12,7 +21,7 @@ extremely usefull when debugging of the nvim behaviour.
 
 To run a single line of code, use the following command:
 
-```lua
+```vimscript
 :lua print("hello world")
 ```
 
@@ -35,14 +44,14 @@ print(type(vim))
 print(vim)
 ```
 
-<!-- nvim-lua-output:start -->
+<!-- md-runner-output:start -->
 
 ```text
 table
-table: 0x79a67ffea218
+table: 0x75fccf52f218
 ```
 
-<!-- nvim-lua-output:end -->
+<!-- md-runner-output:end -->
 
 The following table shows the lua subtables that are responsible for various
 aspects of the editor:
