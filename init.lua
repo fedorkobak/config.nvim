@@ -29,18 +29,6 @@ vim.keymap.set("n", "<C-w>K", "<C-w>k", { remap = true })
 -- Plugins
 require('config.lazy')
 
--- Execute fenced code blocks in Markdown.
-local lua_md_runner = require("markdown_lua")
-local molten_md_runner = require("markdown_molten")
-
-lua_md_runner.setup()
-molten_md_runner.setup()
-
-vim.keymap.set("n", "<C-n>", lua_md_runner.execute_block, { desc = "Execute Markdown Lua block" })
-vim.keymap.set("n", "<leader>mr", molten_md_runner.execute_block, {
-    desc = "Execute Markdown block with Molten and insert output",
-})
-
 -- The support of the local `.nvim.lua` config
 vim.o.exrc = true
 
