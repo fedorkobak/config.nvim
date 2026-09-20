@@ -1,3 +1,12 @@
+<!-- md-runner
+{
+  "executors": {
+    "lua": {
+      "module": "md_runner.executors.nvim_lua"
+    }
+  }
+}
+-->
 # API
 
 This page considers the details of using different features of the lua api.
@@ -16,13 +25,13 @@ For example the code:
 print(vim.o.rtp:sub(1,50))
 ```
 
-<!-- nvim-lua-output:start -->
+<!-- md-runner-output:start -->
 
 ```text
 /home/fedor/.config/nvim,/home/fedor/.local/share/
 ```
 
-<!-- nvim-lua-output:end -->
+<!-- md-runner-output:end -->
 
 Just prints the runtime path. However, it is a string type, so to edit it you need
 to implement concatenation/search/remove... operations by yourself.
@@ -35,13 +44,13 @@ vim.opt.rtp:prepend("/tmp")
 print(vim.o.rtp:sub(1, 50))
 ```
 
-<!-- nvim-lua-output:start -->
+<!-- md-runner-output:start -->
 
 ```text
 /tmp,/home/fedor/.config/nvim,/home/fedor/.local/s
 ```
 
-<!-- nvim-lua-output:end -->
+<!-- md-runner-output:end -->
 
 The corresponding change appears in the `vim.o.rtp` because they are different
 interfaces for the same parameter.
@@ -61,19 +70,25 @@ lines of the buffer:
 
 ```lua
 curr_buffer = vim.api.nvim_get_current_buf()
-print(curr_buffer)
-print(vim.api.nvim_buf_get_lines(curr_buffer, 0, 3, false))
+print("buffer number:", curr_buffer)
+
+local output = vim.api.nvim_buf_get_lines(curr_buffer, 0, 3, false)
+
+for _, v in ipairs(output) do
+    print(v)
+end
 ```
 
-<!-- nvim-lua-output:start -->
+<!-- md-runner-output:start -->
 
 ```text
-39
-{ "# API", "", "This page considers the details of using different features of
-the lua api." }
+buffer number: 6
+<!-- md-runner
+{
+  "executors": {
 ```
 
-<!-- nvim-lua-output:end -->
+<!-- md-runner-output:end -->
 
 The result is literally the first lines of this document, because code was
 executed while the document was edited.
@@ -122,13 +137,13 @@ The following example shows how to add an apsolute path to file:
 print(vim.fn.fnamemodify("example.txt", ":p"))
 ```
 
-<!-- nvim-lua-output:start -->
+<!-- md-runner-output:start -->
 
 ```text
-/home/fedor/Documents/code/fedorkobak/example.txt
+/home/fedor/Documents/code/config.nvim/example.txt
 ```
 
-<!-- nvim-lua-output:end -->
+<!-- md-runner-output:end -->
 
 ## `vim.system`
 
@@ -153,14 +168,14 @@ local complted = obj:wait()
 print(complted.stdout)
 ```
 
-<!-- nvim-lua-output:start -->
+<!-- md-runner-output:start -->
 
 ```text
 output of the command line
 
 ```
 
-<!-- nvim-lua-output:end -->
+<!-- md-runner-output:end -->
 
 For a change the output of the `docker ps` command:
 
@@ -169,14 +184,14 @@ local obj = vim.system({"docker", "ps"}):wait()
 print(obj.stdout)
 ```
 
-<!-- nvim-lua-output:start -->
+<!-- md-runner-output:start -->
 
 ```text
 CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 
 ```
 
-<!-- nvim-lua-output:end -->
+<!-- md-runner-output:end -->
 
 ### `SystemObj`
 
@@ -204,7 +219,7 @@ local completed = obj:wait()
 print(completed.stdout)
 ```
 
-<!-- nvim-lua-output:start -->
+<!-- md-runner-output:start -->
 
 ```text
 hello
@@ -214,12 +229,13 @@ lua
 nvim.log
 README
 README.md
+rumdl.toml
 scripts
 setup.sh
 
 ```
 
-<!-- nvim-lua-output:end -->
+<!-- md-runner-output:end -->
 
 ### Callbacks
 
@@ -228,25 +244,28 @@ by defining the corresponding callback.
 
 ---
 
-The following cell starts the bash session, which defines the callbacks that
-wrap the message passed the corresponding stream in markers that allow
-the stream to be identified:
+The following cell starts the bash session. The `stdout` and `stderr` callbacks
+are passed to the `vim.system` call. These callbacks accumulate the information
+fetched from the corresponding streams into the `output_data` variable:
 
 ```lua
+
+local output_data = ""
+
 local obj = vim.system({ "bash" }, {
     stdin = true,
     stdout = function(err, data)
         if data then
-            print("[stdin]" .. data .. "[stdin]")
+            output_data = output_data .. "[stdin]" .. data .. "[stdin]" .. "\n"
         else
-            print("stdout closed")
+            output_data = output_data .. "stdout closed" .. "\n"
         end
     end,
     stderr = function(err, data)
         if data then
-            print("[stderr]" .. data .. "[stderr]")
+            output_data = output_data .. "[stderr]" .. data .. "[stderr]" .. "\n"
         else
-            print("stderr closed")
+            output_data = output_data .. "stderr closed" .. "\n"
         end
     end
 })
@@ -256,17 +275,18 @@ obj:write("echo -n message_to_stderr >& 2\n")
 obj:write(nil)
 
 completed = obj:wait()
-print(completed.stdout)
+print(output_data)
+
 ```
 
-<!-- nvim-lua-output:start -->
+<!-- md-runner-output:start -->
 
 ```text
 [stdin]message_to_stdin[stdin]
 [stderr]message_to_stderr[stderr]
-stdout closed
 stderr closed
-nil
+stdout closed
+
 ```
 
-<!-- nvim-lua-output:end -->
+<!-- md-runner-output:end -->
