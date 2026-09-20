@@ -100,3 +100,47 @@ The `vim.o.runtimepath`/`vim.o.rtp` variable determines where nvim looks for
 executable scripts.
 
 Check more in the corresponding [API](lua/API.md) page.
+
+## Loading modules
+
+The process of loading modules in the nvim runtime is generally the same as in
+the classical Lua. The main difference is in the paths where nvim looks for a modules:
+
+- `vim.o.rtp`: keeps a string that contains the paths where nvim looks for modules.
+- `vim.nvim_list_runtime_paths`: function retunrs the paths as the table of strings.
+- `vim.loader`: the loader that vim atteches to runtime.
+    - `vim.loader.find`: allows to obtain the path that would be resolved for a
+      specific module.
+
+---
+
+The following code shows the runtime paths available in the current vim environment:
+
+```lua
+ans = vim.api.nvim_list_runtime_paths()
+print(table.concat(ans, "\n", 1, 5))
+```
+
+<!-- md-runner-output:start -->
+```text
+/home/fedor/.config/nvim
+/home/fedor/.local/share/nvim/site
+/home/fedor/.local/share/nvim/lazy/lazy.nvim
+/home/fedor/.local/share/nvim/lazy/telescope-fzf-native.nvim
+/home/fedor/.local/share/nvim/lazy/telescope.nvim
+```
+<!-- md-runner-output:end -->
+
+The next example shows how to find the path where lua will search for a specific
+module that you are attempting to import with `require`:
+
+```lua
+ans = vim.loader.find("telescope")
+vim.print(ans[1].modpath)
+```
+
+<!-- md-runner-output:start -->
+```text
+/home/fedor/.local/share/nvim/lazy/telescope.nvim/lua/telescope/init.lua
+```
+<!-- md-runner-output:end -->
