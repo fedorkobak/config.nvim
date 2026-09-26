@@ -3,6 +3,9 @@
   "executors": {
     "lua": {
       "module": "md_runner.executors.nvim_lua"
+    },
+    "bash": {
+      "module": "md_runner.executors.bash"
     }
   }
 }
@@ -31,6 +34,34 @@ add lua after the suggested `'<,'>` range. Command line would look like this:
 ```vimscript
 :'<,'>lua
 ```
+
+### Lua script
+
+To run the lua script in the nvim runtim use:
+
+- `:luafile <filename>` command from the nvim session.
+- `nvim -l <filename>` option to run the script in nvim environemnt from the
+  system shell.
+
+---
+
+The following examples show the creation and execution of a lua script in the
+nvim environemt, invoked from the system command line:
+
+```bash
+cat << EOF > /tmp/run_script.lua
+print("this is lua script")
+EOF
+
+nvim -l /tmp/run_script.lua
+```
+
+<!-- md-runner-output:start -->
+```text
+this is lua script
+
+```
+<!-- md-runner-output:end -->
 
 ## API
 
